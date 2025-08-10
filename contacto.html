@@ -1,0 +1,65 @@
+<!--
+Sección: Contacto
+Propósito:
+  Presento los datos de contacto de V-Brime y enlaces a redes, además de un mapa embebido de Google Maps.
+
+Contenido:
+  - Encabezado "Contacto".
+  - Datos de la empresa (nombre legal, correo y teléfono con enlaces mailto: y tel:).
+  - Mapa de Google Maps (iframe) apuntando a Monterrey, N.L., con carga diferida (loading="lazy").
+  - Íconos de redes sociales (WhatsApp, Instagram, Facebook, TikTok) y acceso rápido al correo.
+
+Dependencias:
+  - Font Awesome para los íconos (debe cargarse en el <head> del sitio).
+  - Estilos externos del proyecto (clases: content, contact, title, etc.).
+
+Accesibilidad/Usabilidad:
+  - Los enlaces a redes abren en pestaña nueva (target="_blank").
+  - El teléfono y correo son clicables en móviles/escritorio (tel:, mailto:).
+  - El iframe del mapa se muestra responsivo dentro de un contenedor al 80% de ancho.
+
+Notas:
+  - Mantengo colores inline para identificar cada red (WhatsApp, Instagram, Facebook, TikTok).
+  - El <strong> vacío antes de la razón social es decorativo; lo conservo tal cual está en el diseño.
+  - Política de referencia (referrerpolicy) y carga diferida activadas en el iframe para mejor privacidad/performance.
+
+Posibles mejoras (sin cambiar la funcionalidad):
+  - Agregar rel="noopener noreferrer" en enlaces con target="_blank".
+  - Mover estilos inline a la hoja CSS del proyecto para mantener consistencia.
+  - Añadir texto alternativo/aria-label en los íconos para lectores de pantalla.
+-->
+
+<section class="content contact">
+  <h2 class="title">Contacto</h2>
+
+  <div class="contact-info">
+    <p><strong></strong> V-Brime Tecnología S.A. de C.V.</p>
+    <p><strong>Correo:</strong> <a href="mailto:vbrime167@hotmail.com">vbrime167@hotmail.com</a></p>
+    <p><strong>Teléfono:</strong> <a href="tel:+528134523465">813 452 3465</a></p>
+  </div>
+
+  <div class="mapa-container" style="margin: 40px auto;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.0458613536567!2d-100.316112!3d25.686614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662958c3ad8947d%3A0x62f16142770b2f2c!2sMonterrey%2C%20N.L.!5e0!3m2!1ses!2smx!4v1697398700000!5m2!1ses!2smx"
+      width="80%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="social-icons" style="margin-top: 30px;">
+    <a href="https://wa.me/528134523465" target="_blank" title="WhatsApp" style="margin: 0 10px; color: #25D366;">
+      <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
+    <a href="https://instagram.com/vbrime" target="_blank" title="Instagram" style="margin: 0 10px; color: #E1306C;">
+      <i class="fab fa-instagram fa-2x"></i>
+    </a>
+    <a href="https://facebook.com/vbrime" target="_blank" title="Facebook" style="margin: 0 10px; color: #111bd9;">
+      <i class="fab fa-facebook fa-2x"></i>
+    </a>
+    <a href="https://tiktok.com/@vbrime" target="_blank" title="TikTok" style="margin: 0 10px; color: #fff;">
+      <i class="fab fa-tiktok fa-2x"></i>
+    </a>
+    <a href="mailto:vbrime167@hotmail.com" title="Correo" style="margin: 0 10px; color: #f8f8d9;">
+      <i class="fas fa-envelope fa-2x"></i>
+    </a>
+  </div>
+</section>

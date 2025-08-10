@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    Archivo: index.html
+    Propósito: Landing de V-Brime con navbar, slider e inyección de módulos.
+    Secciones: encabezado (logo/menu), slider, contenedores de módulos (productos/nosotros/precios/venta/contacto).
+    -style.css, Font Awesome (icono menú), scripts.js.
+    -menú responsive (clase .active), slider automático cada 4s con flechas y puntos.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="V-Brime - Venta de computadoras, teléfonos y accesorios tecnológicos en Monterrey.">
+  <meta name="author" content="V-Brime">
+  <link rel="icon" href="favicon.ico">
+  <title>V-Brime</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Iconos para el botón de menú en móvil -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!--  Encabezado: logo + navegación principal  -->
+  <div class="head">
+    <div class="logo" style="display: flex; align-items: center;">
+      <img src="Logo_VBrime/VB.png" alt="Logo V-Brime" style="height: 55px; margin-right: 20px;">
+      <a href="#" style="color: #c026d0; text-decoration: none; text-shadow: 1px 2px 5px #7a007c;">V-Brime</a>
+    </div>
+    <nav class="navbar" id="navbar">
+      <!-- Enlaces a secciones de esta misma página -->
+      <a href="#">Inicio</a>
+      <a href="#modulo-productos">Productos</a>
+      <a href="#modulo-nosotros">Nosotros</a>
+      <a href="#modulo-precios">Precios</a>
+      <a href="#modulo-venta">Pedidos</a>
+      <a href="#modulo-contacto">Contacto</a>
+      <!-- Enlace a la página de autenticación -->
+      <a href="auth.html#login-section">Login</a>
+    </nav>
+    <!-- Botón hamburguesa (móvil) que alterna clase .active en #navbar -->
+    <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+
+  <!-- Slider principal: imágenes destacadas + controles + dots -->
+  <div class="slider">
+    <div class="slides">
+      <div class="slide fade"><img src="carrucel/laptop_gamer.jpg" alt="Laptop Gamer"></div>
+      <div class="slide fade"><img src="carrucel/s22.jpg" alt="Samsung S22"></div>
+      <div class="slide fade"><img src="carrucel/iphone16.jpg" alt="iPhone 16"></div>
+      <div class="slide fade"><img src="carrucel/PcGamer.jpg" alt="PC Gamer"></div>
+      <!-- Controles prev/next -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <!-- Indicadores (puntos) -->
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+  </div>
+
+  <!-- Contenedores vacíos: scripts.js inyecta aquí los módulos -->
+  <!-- Módulos cargados dinámicamente (sin login/registro) -->
+  <div id="modulo-productos"></div>
+  <div id="modulo-nosotros"></div>
+  <div id="modulo-precios"></div>
+  <div id="modulo-venta"></div>
+  <div id="modulo-contacto"></div>
+
+  <!-- Scripts de la pagina -->
+  <script src="scripts.js"></script>
+  <script>
+    // Lógica del slider y menú:
+    // - showSlides(): auto-rotación cada 4s, activa el dot correspondiente
+    // - plusSlides()/currentSlide(): control manual (reinicia temporizador)
+    // - toggleMenu(): muestra/oculta el menú en móvil
+    let slideIndex = 0; let timer;
+    function showSlides(){
+      const slides = document.getElementsByClassName("slide");
+      const dots = document.getElementsByClassName("dot");
+      for (let i=0;i<slides.length;i++){slides[i].style.display="none"}
+      slideIndex++; if (slideIndex>slides.length){slideIndex=1}
+      for (let i=0;i<dots.length;i++){dots[i].classList.remove("active")}
+      slides[slideIndex-1].style.display="block"; dots[slideIndex-1].classList.add("active");
+      timer=setTimeout(showSlides,4000);
+    }
+    function plusSlides(n){clearTimeout(timer);slideIndex+=n-1;showSlides()}
+    function currentSlide(n){clearTimeout(timer);slideIndex=n-1;showSlides()}
+    function toggleMenu(){document.getElementById("navbar").classList.toggle("active")}
+    document.addEventListener("DOMContentLoaded", showSlides);
+  </script>
+
+  <!-- ===== Reglas responsive del menú móvil (breakpoint 768px) ===== -->
+  <style>
+    .menu-toggle{display:none;background:none;border:none;color:white;font-size:24px;margin-right:15px}
+    @media (max-width:768px){
+      .menu-toggle{display:block}
+      .navbar{display:none;flex-direction:column;background-color:#171717;position:absolute;top:63px;right:0;width:100%}
+      .navbar.active{display:flex}
+      .navbar a{padding:15px;border-top:1px solid #444}
+    }
+  </style>
+</body>
+</html>

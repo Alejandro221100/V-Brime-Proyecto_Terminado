@@ -1,0 +1,106 @@
+*{
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+vertical-align: baseline;
+}
+
+body{
+text-align: center;
+font-family: sans-serif;
+background: url('Backgrounds/background-gris-oscuro.jpg') no-repeat center center fixed;
+background-size: cover;
+color: #fff;
+padding-top: 63px; /* Compensa la barra fija */
+}
+
+.head{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 63px;
+background: #171717;
+width: 100%;
+}
+
+.navbar{ display: flex; margin-right: 10px; }
+.logo{ display: flex; margin-left: 30px; }
+.logo a { text-decoration: none; color: #fff; text-transform: uppercase; font-size: 20px; }
+
+.navbar a { display: block; padding: 23px 20px; color: #fff; text-decoration: none; text-transform: uppercase; font-size: 20px; }
+.navbar a:hover { background: #3f3f3f; color: #000; }
+
+.header{ display: flex; justify-content: center; align-items: center; }
+.header  { height: 60vh !important; background-size: cover; }
+
+.title{ margin-bottom: 40px; font-size: 60px; font-weight: 600; text-transform: uppercase; color: #fff; }
+
+p{ margin-bottom: 40px; font-size: 18px; color: #fff; padding: 0 100px; }
+
+.btn { display: inline-block; margin-top: 15px; padding: 10px 50px; border: 2px solid #9c27b0; color: #fff; text-decoration: none; background: #9c27b0; }
+.btn:hover{ background: none; }
+
+.btn-home { display: flex; }
+.btn-home a{ margin: 0 10px; }
+
+.content{ padding: 60px 20px; margin: 60px auto; max-width: 1200px; box-sizing: border-box; }
+
+.sau{ padding: 30px; background: transparent; }
+
+.box-container{ display: flex; justify-content: center; flex-wrap: wrap; text-align: center; }
+.box-container .box{ height: 11rem; width: 17rem; background: #101010; text-align: center; border-radius: 1rem; box-shadow: 0 .3rem 5rem rgba(0, 0, 0, 0.5); margin: 2rem; }
+.box-container .box i{ height: 3rem; width: 3rem; line-height: 3rem; text-align: center; border-radius: 50%; color: #fff; background: #9c27b0; font-size: 2rem; margin: 1rem 0; }
+.box-container .box h3{ font-size: 20px; color: #9c27b0; }
+.box-container .box p{ padding: 0 15px; font-size: 16px; }
+
+.about{ background: transparent; }
+
+/* SLIDER */
+.slider { position: relative; height: 100vh; overflow: hidden; width: 100%; }
+.slides { position: relative; height: 100%; }
+.slide { display: none; height: 100%; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+.prev, .next { cursor: pointer; position: absolute; top: 50%; padding: 16px; color: white; font-weight: bold; font-size: 24px; transition: 0.6s ease; user-select: none; z-index: 10; }
+.prev { left: 0; }
+.next { right: 0; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.6); }
+.dots { text-align: center; position: absolute; bottom: 15px; width: 100%; z-index: 5; }
+.dot { cursor: pointer; height: 15px; width: 15px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+.dot.active, .dot:hover { background-color: #9c27b0; }
+.fade { animation-name: fade; animation-duration: 1s; }
+@keyframes fade { from { opacity: .4 } to { opacity: 1 } }
+
+#modulo-productos,
+#modulo-nosotros,
+#modulo-servicios,
+#modulo-precios,
+#modulo-venta,
+#modulo-contacto { margin-bottom: 80px; }
+
+@media (max-width: 768px) {
+.title{ margin-bottom: 0; font-size: 40px; }
+.sau{ height: auto; }
+.navbar{ display: none; }
+p{ padding: 0 20px; }
+}
+
+.logo img { height: 30px; margin-right: 8px; }
+/* ====== AUTH PAGES ====== */
+.auth { max-width: 1200px; }
+.auth-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items:start; }
+.auth-card { background: rgba(16,16,16,0.85); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.35); text-align:left; }
+.auth-title { font-size: 28px; margin-bottom: 8px; text-transform:none; }
+.auth-sub { margin: 0 0 20px 0; padding: 0; color:#ddd; font-size: 14px; }
+.auth-form label { display:block; margin:12px 0 6px; color:#eee; font-size:14px; }
+.auth-form input { width:100%; padding:12px 14px; border-radius:10px; border:1px solid #333; outline:none; }
+.auth-form input:focus { border-color:#9c27b0; box-shadow:0 0 0 2px rgba(156,39,176,.25); }
+.auth-btn { width:100%; margin-top:18px; }
+.auth-msg { margin-top:12px; min-height:20px; color:#f8f8d9; }
+
+@media (max-width: 900px){ .auth-grid { grid-template-columns: 1fr; } }

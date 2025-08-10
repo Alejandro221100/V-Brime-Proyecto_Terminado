@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    Archivo: auth.html
+    Módulo: Acceso (Login/Registro) – V-Brime
+    Propósito:
+      - Proveer interfaz para iniciar sesión y crear cuenta.
+    Entradas (forms):
+      - #formLogin: usuario (correo o nombre), contrasena
+      - #formRegistro: nombre, correo, contrasena, confirmación
+    Salidas:
+      - Mensajes en #loginMensaje y #registroMensaje (poblados por scripts.js)
+    Dependencias:
+      - style.css (estilos globales)
+      - Font Awesome (icono menú móvil)
+      - scripts.js (debe exponer activarLogin() y activarRegistro())
+    Seguridad:
+      - Validación mínima en cliente (coincidencia de contraseñas).
+      - La validación real y los hashes se hacen en el servidor (PHP).
+    Notas:
+      - Los enlaces de navbar apuntan a secciones del index (sitio de una sola página).
+      - El botón de menú alterna la clase .active del navbar para móviles.
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-Brime | Acceso</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Iconos para el botón  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- ====== Encabezado con logo y navegación principal ====== -->
+  <div class="head">
+    <div class="logo" style="display:flex;align-items:center;">
+      <img src="Logo_VBrime/VB.png" alt="Logo V-Brime" style="height:55px;margin-right:20px;">
+      <a href="index.html" style="color:#c026d0;text-decoration:none;text-shadow:1px 2px 5px #7a007c;">V-Brime</a>
+    </div>
+    <nav class="navbar" id="navbar">
+      <!-- Enlaces a secciones del index  -->
+      <a href="index.html">Inicio</a>
+      <a href="index.html#modulo-productos">Productos</a>
+      <a href="index.html#modulo-nosotros">Nosotros</a>
+      <a href="index.html#modulo-precios">Precios</a>
+      <a href="index.html#modulo-venta">Pedidos</a>
+      <a href="index.html#modulo-contacto">Contacto</a>
+      <a href="#login-section">Login</a>
+    </nav>
+    <!-- Botón (móvil): alterna .active en #navbar -->
+    <button class="menu-toggle" onclick="document.getElementById('navbar').classList.toggle('active')">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- ====== Contenido principal: grid de autenticación ====== -->
+  <main class="content auth">
+    <div class="auth-grid">
+      <!-- ====== Login ======
+           Espera que scripts.js defina activarLogin()
+           para manejar envío (fetch/POST), estados y mensajes (#loginMensaje). -->
+      <section id="login-section" class="auth-card">
+        <h2 class="auth-title">Iniciar sesión</h2>
+        <p class="auth-sub">Bienvenido, entra a tu cuenta.</p>
+        <form id="formLogin" class="auth-form">
+          <label for="usuario">Correo o nombre</label>
+          <input type="text" id="usuario" name="usuario" required>
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" name="contrasena" required>
+          <button type="submit" class="btn auth-btn">Iniciar sesión</button>
+          <!-- scripts.js debería escribir aquí el resultado del login -->
+          <p id="loginMensaje" class="auth-msg"></p>
+        </form>
+      </section>
+
+      <!--          Registro
+           Visible en la vista para onboarding rápido.
+           scripts.js debe definir activarRegistro() para manejar envío, validaciones
+           y mostrar #registroMensaje. -->
+      <section id="registro-section" class="auth-card">
+        <h2 class="auth-title">Crea una nueva cuenta</h2>
+        <p class="auth-sub">Regístrate con tu nombre, correo y contraseña.</p>
+        <form id="formRegistro" class="auth-form">
+          <label for="nombre">Usuario</label>
+          <input type="text" id="nombre" name="nombre" required>
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" required>
+          <label for="contrasena_reg">Contraseña</label>
+          <input type="password" id="contrasena_reg" name="contrasena" required>
+          <label for="contrasena_conf">Confirmar contraseña</label>
+          <input type="password" id="contrasena_conf" required>
+          <button type="submit" class="btn auth-btn">Registrarme</button>
+          <!-- scripts.js debería escribir aquí el resultado del registro -->
+          <p id="registroMensaje" class="auth-msg"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Scripts de la página -->
+  <script src="scripts.js"></script>
+  <script>
+    // Inicialización ligera tras cargar el DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      // Validación mínima en cliente: contraseñas iguales en registro
+      const reg = document.getElementById('formRegistro');
+      if (reg) {
+        reg.addEventListener('submit', (e) => {
+          const a = document.getElementById('contrasena_reg').value;
+          const b = document.getElementById('contrasena_conf').value;
+          if (a !== b) { e.preventDefault(); alert('Las contraseñas no coinciden'); }
+        });
+      }
+      // Hooks opcionales: se espera que scripts.js exponga estas funciones
+      if (typeof activarLogin === 'function') activarLogin();
+      if (typeof activarRegistro === 'function') activarRegistro();
+    });
+  </script>
+</body>
+</html>

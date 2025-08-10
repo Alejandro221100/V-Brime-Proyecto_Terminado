@@ -1,0 +1,51 @@
+<!-- Pedido: formulario de compra (datos, producto, cantidad, total, pago). Total visible lo calcula JS; total_num es el valor enviado. -->
+<section class="content sale" id="form-venta">
+  <h2 class="title">Pedido</h2>
+  <form id="formularioVenta" style="max-width: 600px; margin: auto;">
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" name="direccion" required><br><br>
+
+    <label for="correo">Correo electrónico:</label>
+    <input type="email" id="correo" name="correo" required><br><br>
+
+    <label for="telefono">Número telefónico:</label>
+    <input type="tel" id="telefono" name="telefono" required><br><br>
+
+    <!-- Producto seleccionado define precio vía data-precio -->
+    <label for="producto">Producto a comprar:</label>
+    <select id="producto" name="producto" required>
+      <option value="" data-precio="0">Seleccione una opción</option>
+      <option value="PC Gamer Ryzen 9" data-precio="37000">PC Gamer Ryzen 9</option>
+      <option value="Laptop Lenovo IdeaPad" data-precio="11500">Laptop Lenovo IdeaPad</option>
+      <option value="iPhone 16" data-precio="19000">iPhone 16</option>
+      <option value="Samsung Galaxy S22" data-precio="13900">Samsung Galaxy S22</option>
+    </select><br><br>
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" name="cantidad" min="1" value="1" required><br><br>
+
+    <!-- total (texto) mostrado + total_num (numérico oculto) para enviar a servidor -->
+    <label for="total">Total (MXN):</label>
+    <input type="text" id="total" name="total_visible" readonly value="$0"><br><br>
+    <input type="hidden" id="total_num" name="total" value="0">
+
+    <label for="pago">Forma de pago:</label>
+    <select id="pago" name="pago" required>
+      <option value="">Seleccione método de pago</option>
+      <option value="tarjeta">Tarjeta de crédito/débito</option>
+      <option value="paypal">PayPal</option>
+    </select><br><br>
+
+    <button type="submit" class="btn">Enviar pedido</button>
+  </form>
+</section>
+
+<!-- Gracias: pantalla de confirmación (oculta hasta completar pedido) -->
+<section class="content thank-you" id="gracias" style="display: none;">
+  <h2 class="title">¡Gracias por tu compra!</h2>
+  <p>Hemos recibido tu pedido correctamente.</p>
+  <a href="#" class="btn" onclick="volverAlInicio()">Volver al inicio</a>
+</section>
