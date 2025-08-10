@@ -14,10 +14,10 @@
  *   - Codificación actual: utf8 (considera utf8mb4 para soporte completo de emojis).
  */
 
-$host = 'sql206.infinityfree.com'; // Servidor MySQL
-$user = 'if0_38917775';            // Usuario de la base de datos
-$pass = 'DPtJJ4ovJmg6';            // Contraseña
-$db   = 'if0_38917775_basededatos';// Nombre de la base de datos
+$host = 'xxxxxxxxx'; // Servidor MySQL
+$user = 'xxxxxxxxx';            // Usuario de la base de datos
+$pass = 'xxxxxxxxx';            // Contraseña
+$db   = 'xxxxxxxxx';// Nombre de la base de datos
 
 try {
     // DSN: incluye host, base y charset; PDO manejará la conexión
@@ -32,3 +32,4 @@ try {
     die("Error de conexión: " . $e->getMessage());
 }
 ?>
+
